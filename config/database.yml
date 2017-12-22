@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: Idea_Belt_production
-  username: Idea_Belt
+  username: ubuntu
   password: <%= ENV['IDEA_BELT_DATABASE_PASSWORD'] %>
