@@ -1,0 +1,29 @@
+
+<a href = "/ideas"> Bright_ideas </a>
+</br>
+</br>
+</br>
+
+<div id= wrapper>
+<h1><%= @idea.user.name %> says :<textarea cols="60" rows="4"> <%= @idea.content%> </textarea><h2>
+</div>
+
+<h2> People who liked the post</h2>
+<table border ="1">
+
+    <tr> 
+    <th>Alias</th>
+    <th>Name</th>
+    </tr>
+
+<% if @idea.liked_users %>
+<% @idea.liked_users.each do |likers| %>
+    <tr>
+        <td><h2><a href="/users/<%= likers.id %>"> <%= likers.alias %></h2> </a></td>
+        <td><h2><%= likers.name %></h2> </td>
+    </tr>
+<% end %>
+<% end %>
+    <tr> </tr>
+  
+</table>

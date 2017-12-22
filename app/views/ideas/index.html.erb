@@ -1,0 +1,33 @@
+<div id = " wrapper">
+<h1>Ideas#index</h1>
+<p>Find me in app/views/ideas/index.html.erb</p>
+
+<h2>Hi <%= current_user.name %>!!</h2>
+
+<h1>Post a Idea</h1>
+
+<% if flash[:errors] %>
+	<% flash[:errors].each do |e| %>
+		<p><%= e %></p>
+	<% end %>
+<% end %>	
+
+<form action="/ideas" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+	<textarea name="message[content]" id="message" cols="100" rows="2"></textarea>
+	<input type="submit" value="Idea!">
+</form>
+
+<% @messages.each do |message| %>
+    <div>
+    <a href = "/users/<%= message.user.id %> "> <%= message.user.name %>  </a> says
+    <textarea cols="60" rows="4"><%= message.content %></textarea>
+    <p>
+    <a href ="ideas/<%= message.id %>/likes"> Like </a>    *
+    <a href ="ideas/<%= message.id %>">
+    <%= message.likes.count %> People liked </a>
+    </p>
+    </div>
+<% end %>
+
+</div>
